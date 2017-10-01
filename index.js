@@ -4,11 +4,8 @@ const password = process.env.SFDC_PASS;
 const conn = new jsforce.Connection({});
 
 const Episode7     = require('episode-7');
-const createServer = require('./server');
-const oAuthToken   = require('./oauth-token');
-const updateToken  = require('./update-token');
-const server = createServer();
-
+const oAuthToken   = require('./lib/oauth-token');
+const updateToken  = require('./lib/update-token');
 const modelId    = process.env.CUSTOM_MODEL_ID;
 const jwtToken   = process.env.EINSTEIN_VISION_TOKEN
 const pvsUrl = process.env.EINSTEIN_VISION_URL;
