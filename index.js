@@ -16,7 +16,11 @@ Episode7.run(updateToken, pvsUrl, accountId, privateKey)
 .then(() => {
     conn.login(username, password, function(err, userInfo) {
         if (err) { return console.error(err); }
+
+        console.log('We are listening');
         conn.streaming.topic("/event/Image_Upload__e").subscribe(function(message) {
+            
+            console.log(message);
             console.dir(message);
           
             Episode7.run(sendImageToVisionApi,
@@ -28,6 +32,7 @@ Episode7.run(updateToken, pvsUrl, accountId, privateKey)
                 jwtToken)
             .then(function(predictions) {
                 console.dir(predictions);
+                console.log(predictions);
                 message.payload["RecordId__c"];
             })
             .catch( error => next(error));
