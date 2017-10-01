@@ -6,6 +6,7 @@ const conn = new jsforce.Connection({});
 const Episode7     = require('episode-7');
 const oAuthToken   = require('./lib/oauth-token');
 const updateToken  = require('./lib/update-token');
+const sendImageToVisionApi = require('./lib/send-image-to-vision-api');
 const modelId    = process.env.CUSTOM_MODEL_ID;
 const jwtToken   = process.env.EINSTEIN_VISION_TOKEN
 const pvsUrl = process.env.EINSTEIN_VISION_URL;
