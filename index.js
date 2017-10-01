@@ -20,8 +20,6 @@ Episode7.run(updateToken, pvsUrl, accountId, privateKey)
 
         console.log('We are listening');
         conn.streaming.topic("/event/Image_Upload__e").subscribe(function(message) {
-            
-            console.log(message);
             console.dir(message);
           
             Episode7.run(sendImageToVisionApi,
@@ -33,8 +31,12 @@ Episode7.run(updateToken, pvsUrl, accountId, privateKey)
                 jwtToken)
             .then(function(predictions) {
                 console.dir(predictions);
-                console.log(predictions);
-                message.payload["RecordId__c"];
+                let value = predictions["probabilities"][0];
+                conn.sobject("Image_Classification__e").create({Classification__c: value["label"], Confidence__c: value["probability"], Record_Id__c: message.payload["RecordId__c"]})
+                .then(function(res) {
+                    console.dir(res);
+                })
+                .catch( error => next(error));
             })
             .catch( error => next(error));
         });
