@@ -1,0 +1,23 @@
+{
+  "name": "df17-netpix-node",
+  "version": "1.0.0",
+  "description": "Platform Event handler to pass image to Einstein Vision API.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "heroku",
+    "node",
+    "Einstein",
+    "vision",
+    "df17"
+  ],
+  "author": "Paul Battisson @pbattisson",
+  "license": "ISC",
+  "dependencies": {
+    "episode-7": "^1.1.1",
+    "jsforce": "^1.8.0",
+    "jsonwebtoken": "^8.0.1"
+  }
+}
