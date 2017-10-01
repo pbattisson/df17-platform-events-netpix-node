@@ -10,10 +10,7 @@ const updateToken  = require('./update-token');
 const server = createServer();
 
 const modelId    = process.env.CUSTOM_MODEL_ID;
-const pvsUrl     = process.env.EINSTEIN_VISION_URL;
 const jwtToken   = process.env.EINSTEIN_VISION_TOKEN
-
-const PORT = process.env.PORT || 5000;
 const pvsUrl = process.env.EINSTEIN_VISION_URL;
 const accountId  = process.env.EINSTEIN_VISION_ACCOUNT_ID;
 const privateKey = process.env.EINSTEIN_VISION_PRIVATE_KEY;
