@@ -33,10 +33,10 @@ Episode7.run(updateToken, pvsUrl, accountId, privateKey)
                 let predictedValues = JSON.parse(predictions);
                 console.dir(predictedValues);
                 let classifications = [];
-                for(let i = 0, len = predictedValues.length; i < len; i++) {
-                    console.log(predictedValues[i].label);
-                    console.log(predictedValues[i].probability);
-                    classifications.push({Classification__c: predictedValues[i].label, Confidence__c: predictedValues[i].probability, Record_Id__c: message.payload["RecordId__c"]});
+                for(let i = 0, len = predictedValues.probabilities.length; i < len; i++) {
+                    console.log(predictedValues.probabilities[i].label);
+                    console.log(predictedValues.probabilities[i].probability);
+                    classifications.push({Classification__c: predictedValues.probabilities[i].label, Confidence__c: predictedValues.probabilities[i].probability, Record_Id__c: message.payload["RecordId__c"]});
                 }
 
                 console.dir(classifications);
