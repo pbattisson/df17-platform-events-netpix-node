@@ -30,9 +30,15 @@ Episode7.run(updateToken, pvsUrl, accountId, privateKey)
                 privateKey,
                 jwtToken)
             .then(function(predictions) {
-                let value = JSON.parse(predictions);
-                console.dir(value);
-                conn.sobject("Image_Classification__e").create({Classification__c: value.label, Confidence__c: value.probability, Record_Id__c: message.payload["RecordId__c"]})
+                let predictedValues = JSON.parse(predictions);
+
+                let classifications = [];
+                for(let i = 0, len = predictedValues.length; i < len; i++) {
+                    classifications.push({Classification__c: predictedValues[i].label, Confidence__c: predictedValues[i].probability, Record_Id__c: message.payload["RecordId__c"]})
+                }
+
+                console.dir(classifications);
+                conn.sobject("Image_Classification__e").create(classifications)
                 .then(function(res) {
                     console.dir(res);
                 })
