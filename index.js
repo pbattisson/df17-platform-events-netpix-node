@@ -36,7 +36,7 @@ Episode7.run(updateToken, pvsUrl, accountId, privateKey)
                 .then(function(res) {
                     console.dir(res);
                 })
-                .catch( error => next(error));
+                .catch( error => console.dir(error));
             })
             .catch( error => next(error));
         });
