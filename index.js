@@ -1,7 +1,7 @@
 const jsforce = require('jsforce');
 const username = process.env.SFDC_USERNAME;
 const password = process.env.SFDC_PASS;
-const conn = new jsforce.Connection({});
+const conn = new jsforce.Connection({version: '40.0'});
 
 const Episode7     = require('episode-7');
 const oAuthToken   = require('./lib/oauth-token');
